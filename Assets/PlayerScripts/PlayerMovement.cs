@@ -38,8 +38,9 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isJumping", true);
             animator.SetBool("isFalling", false);
-            if (animator.GetBool("isClimbing") == true)
+            if (animator.GetBool("isClimbing") == true || (animator.GetFloat("Speed") > 0.01))
             {
+                animator.SetFloat("Speed", Mathf.Abs(horizontal));
                 animator.SetBool("isJumping", false);
                 animator.SetBool("isFalling", false);
             }
@@ -48,17 +49,18 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", false);
-            if (animator.GetBool("isClimbing") == true)
+            if (animator.GetBool("isClimbing") == true || (animator.GetFloat("Speed") > 0.01))
             {
+                animator.SetFloat("Speed", Mathf.Abs(horizontal));
                 animator.SetBool("isJumping", false);
                 animator.SetBool("isFalling", false);
             }
         }
-        else if (rb.velocity.y >= 5)
+        else if (rb.velocity.y < 5 && (rb.velocity.y > 0))
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);
-            if (animator.GetBool("isClimbing") == true)
+            if (animator.GetBool("isClimbing") == true || (animator.GetFloat("Speed") > 0.01))
             {
                 animator.SetBool("isJumping", false);
                 animator.SetBool("isFalling", false);
