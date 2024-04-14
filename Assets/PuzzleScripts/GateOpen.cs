@@ -25,7 +25,7 @@ public class GateOpen : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Equals("Capsule"))
+        if (collision.gameObject.name.Equals("Capsule") && active)
         {
             //get rid of capsule and delete gate
             Destroy(collision.gameObject);
