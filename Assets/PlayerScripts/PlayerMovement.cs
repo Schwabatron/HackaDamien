@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("isFalling", false);
             }
         }
-        else if (rb.velocity.y < 5 && (rb.velocity.y > 3))
+        else if (rb.velocity.y >= 5)
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", true);

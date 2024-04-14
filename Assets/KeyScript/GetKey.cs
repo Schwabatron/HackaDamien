@@ -52,7 +52,7 @@ public class GetKey : MonoBehaviour
 
             //setup ladder size and position
             ladder.transform.position = new Vector2(10, 0);
-            ladder.transform.localScale = new Vector2(3, 6);
+            ladder.transform.localScale = new Vector2(1, 6);
 
         }
     
