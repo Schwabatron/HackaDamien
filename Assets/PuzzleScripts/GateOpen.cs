@@ -27,10 +27,9 @@ public class GateOpen : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Capsule"))
         {
-            //get rid of capsule and open gate
+            //get rid of capsule and delete gate
             Destroy(collision.gameObject);
-
-           // GameObject.Find("Gate").GetComponent<endGame>().openGate();
+            Destroy(GameObject.Find("Gate"));
         }
     }
 }
