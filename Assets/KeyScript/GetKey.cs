@@ -23,16 +23,22 @@ public class GetKey : MonoBehaviour
         //if you touch key
         if (collision.gameObject.name.Equals("Key"))
         {
+
+            GameObject Rocks = GameObject.Find("RockWall");
+            SpriteRenderer srRocks = Rocks.GetComponent<SpriteRenderer>();
+            srRocks.sortingLayerName = "tree";
             //remove the key
             Destroy(collision.gameObject);
 
             //create ladder and add components
             GameObject ladder = new GameObject("ladder");
+
             ladder.tag = "Ladder";
 
             //create SpriteRenderer and add to ladder
             SpriteRenderer sr = new SpriteRenderer();
             sr = ladder.AddComponent<SpriteRenderer>();
+            
 
             //create boxcollider2d and add to ladder as well as configure
             BoxCollider2D bc = new BoxCollider2D(); 
