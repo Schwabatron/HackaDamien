@@ -27,9 +27,10 @@ public class GetKey : MonoBehaviour
             GameObject Rocks = GameObject.Find("RockWall");
             SpriteRenderer srRocks = Rocks.GetComponent<SpriteRenderer>();
             srRocks.sortingLayerName = "tree";
-            //remove the key
+            //remove the key and stop pushing you
             Destroy(collision.gameObject);
-
+            //remove bouncing script to make climbing ladder easier.
+            Destroy(GameObject.Find("Barricade").GetComponent<Crate>());
             //create ladder and add components
             GameObject ladder = new GameObject("ladder");
 
