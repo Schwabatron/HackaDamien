@@ -10,6 +10,7 @@ public class Ladder : MonoBehaviour
     private bool next_to_ladder; //Boolean to detect if the player is in the range of a ladder
     private bool onLadder; //Boolean to check if the player is currently ON a ladder 
     [SerializeField] private Rigidbody2D rb; //Serialized field for the rigidBody 
+    public Animator animator;
 
 
     //Method that is called automatically when a 2D collider enters the trigger collider attached to a GameObject
@@ -49,10 +50,12 @@ public class Ladder : MonoBehaviour
         {
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
+            animator.SetBool("isClimbing", true);
         }
         else
         {
             rb.gravityScale = 2f;
+            animator.SetBool("isClimbing", false);
         }
     }
 }

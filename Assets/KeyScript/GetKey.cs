@@ -51,8 +51,8 @@ public class GetKey : MonoBehaviour
             sr.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
 
             //setup ladder size and position
-            ladder.transform.position = new Vector2(12, 3);
-            ladder.transform.localScale = new Vector2(3, 11);
+            ladder.transform.position = new Vector2(10, 0);
+            ladder.transform.localScale = new Vector2(3, 6);
 
         }
     

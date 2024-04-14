@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -28,26 +29,40 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
             jumping = true;
         }
-        if (rb.velocity.y == 0)
+        else if (rb.velocity.y == 0 && (!Input.GetKeyDown(KeyCode.Space) || !Input.GetKeyDown(KeyCode.W)))
         {
             jumping = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space)) || Input.GetKeyDown(KeyCode.W))
+        if (rb.velocity.y >= 5 && (jumping == true))
         {
             animator.SetBool("isJumping", true);
-        }else
+            animator.SetBool("isFalling", false);
+            if (animator.GetBool("isClimbing") == true)
+            {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", false);
+            }
+        }
+        else if (rb.velocity.y >= 5 && (jumping == false))
         {
             animator.SetBool("isJumping", false);
-        }
-
-        if (rb.velocity.y > 0.5)
-        {
-            animator.SetBool("isFalling", true);
-        }
-        if (rb.velocity.y <= 0.5)
-        {
             animator.SetBool("isFalling", false);
+            if (animator.GetBool("isClimbing") == true)
+            {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", false);
+            }
+        }
+        else if (rb.velocity.y < 5 && (rb.velocity.y > 3))
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", true);
+            if (animator.GetBool("isClimbing") == true)
+            {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", false);
+            }
         }
     }
 }
