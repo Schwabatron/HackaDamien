@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
-   
+
     [SerializeField] private float jumpingPower = 16f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 8f;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
             jumping = true;
         }
-        if(rb.velocity.y == 0)
+        if (rb.velocity.y == 0)
         {
             jumping = false;
         }
